@@ -9,7 +9,7 @@ function ModificarAdmin($vconexion, $datos) {
     $provincia = $datos['Provincia'];
     $contacto = $datos['ContactoAdmin'];
     $email = $datos['EmailAdmin'];
-    $contra = $datos['ContraAdmin'];
+    $contra = password_hash($datos['ContraAdmin'], PASSWORD_DEFAULT);
     $jer = $datos['Jer'];
 
 $query = "UPDATE usuario SET NOMBRE = ?, APELLIDO = ?, DOMICILIO = ?, CIUDAD = ?, ID_PROV = ?, CONTACTO = ?, USUARIO = ? , CONTRASENA = ?, ID_JER = ?  WHERE DNI_U = ? ";

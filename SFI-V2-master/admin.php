@@ -121,8 +121,7 @@ $mensaje='';
 								<th onclick="sortTable(2, this)"><p class="text-center">APELLIDO</p></th>
 								<th onclick="sortTable(3, this)"><p class="text-center">DNI</p></th>
 								<th onclick="sortTable(4, this)"><p class="text-center">USUARIO</p></th>
-								<th onclick="sortTable(5, this)"><p class="text-center">CONTACTO</p></th>
-                <th onclick="sortTable(5, this)"><p class="text-center">CONTRASÑA</p></th>
+                                                                <th onclick="sortTable(5, this)"><p class="text-center">CONTACTO</p></th>
 
 							</tr>
 						</thead>
@@ -140,9 +139,7 @@ $mensaje='';
 											<td ><?php echo $ListadoUser[$i]['USER']; ?></td>
 											<td ><?php echo $ListadoUser[$i]['CON_U']; ?></td>
 
-                      <?php if ($_SESSION['Usuario_id_jer'] == 1 ) { ?>
-                <td ><?php echo $ListadoUser[$i]['CONTRA']; ?></td>
-                <?php } ?>
+
 
 									</tr>
 								<?php } ?>

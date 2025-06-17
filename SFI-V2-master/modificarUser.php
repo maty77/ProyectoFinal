@@ -221,13 +221,13 @@ if (!empty($mensajeE)) {
 											</div>
 									    </div>
 
-									    <div class="mdl-cell mdl-cell--6-col mdl-cell--8-col-tablet">
-											<div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-												<input class="mdl-textfield__input" type="text" id="ContraUser" name="ContraUser" value="<?php echo htmlspecialchars($contra); ?>">
-												<label class="mdl-textfield__label" >Contraseña</label>
-												<span class="mdl-textfield__error">Contraseña invalida</span>
-											</div>
-									    </div>
+                                                                            <div class="mdl-cell mdl-cell--6-col mdl-cell--8-col-tablet">
+                                                                               <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                                                                               <input class="mdl-textfield__input" type="password" id="ContraUser" name="ContraUser" value="">
+                                                                               <label class="mdl-textfield__label" >Contraseña</label>
+                                                                               <span class="mdl-textfield__error">Contraseña invalida</span>
+                                                                               </div>
+                                                                            </div>
 
 									    
  									   <input type="hidden" name="Disponibilidad" value="1">
