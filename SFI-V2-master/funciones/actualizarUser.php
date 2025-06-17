@@ -9,7 +9,7 @@ function ModificarUser($vconexion, $datos) {
     $provincia = $datos['Provincia'];
     $contacto = $datos['ContactoUser'];
     $email = $datos['EmailUser'];
-    $contra = $datos['ContraUser'];
+    $contra = password_hash($datos['ContraUser'], PASSWORD_DEFAULT);
 
 
 $query = "UPDATE usuario SET NOMBRE = ?, APELLIDO = ?, DOMICILIO = ?, CIUDAD = ?, ID_PROV = ?, CONTACTO = ?, USUARIO = ? , CONTRASENA = ? WHERE DNI_U = ? ";

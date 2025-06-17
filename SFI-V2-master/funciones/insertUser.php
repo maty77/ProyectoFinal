@@ -1,17 +1,34 @@
-<?php 
+<?php
 function InsertarUsuario($vConexion){
-    $valor = !empty($_POST['Numero'])? $_POST['Numero']:'';
-    $Dispo = !empty($_POST['Disponibilidad'])? $_POST['Disponibilidad']:'';
+    $valor = !empty($_POST['Numero']) ? $_POST['Numero'] : 0;
+    $Dispo = !empty($_POST['Disponibilidad']) ? $_POST['Disponibilidad'] : 0;
 
-    $SQL_Insert="INSERT INTO Usuario (DNI_U, ID_JER, ID_PROV, Contrasena, Nombre, Apellido, Usuario, Contacto, Domicilio, Ciudad, Disponibilidad )
-    VALUES (".$_POST['DNI'].",".$valor.",".$_POST['Provincia'].", '".$_POST['ContraUser']."','".$_POST['NombreUser']."','".$_POST['ApellidoUser']."', '".$_POST['EmailUser']."',".$_POST['ContactoUser'].", '".$_POST['DomicilioUser']."','".$_POST['CiudadUser']."',".$Dispo." )";
+    $sql = "INSERT INTO Usuario (DNI_U, ID_JER, ID_PROV, Contrasena, Nombre, Apellido, Usuario, Contacto, Domicilio, Ciudad, Disponibilidad) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+    $stmt = mysqli_prepare($vConexion, $sql);
+    if (!$stmt) {
+        return false;
+    }
 
+    $hash = password_hash($_POST['ContraUser'], PASSWORD_DEFAULT);
+    mysqli_stmt_bind_param(
+        $stmt,
+        "iiisssssssi",
+        $_POST['DNI'],
+        $valor,
+        $_POST['Provincia'],
+        $hash,
+        $_POST['NombreUser'],
+        $_POST['ApellidoUser'],
+        $_POST['EmailUser'],
+        $_POST['ContactoUser'],
+        $_POST['DomicilioUser'],
+        $_POST['CiudadUser'],
+        $Dispo
+    );
 
-if (!mysqli_query($vConexion, $SQL_Insert)) {
-    return false;
+    $ok = mysqli_stmt_execute($stmt);
+    mysqli_stmt_close($stmt);
+
+    return $ok;
 }
-return true;
-
-}
-
 ?>
